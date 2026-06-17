@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tejiendo Mis Raíces - Telar de Cintura</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        function cambiarPagina(id) {
+            var paginas = document.getElementsByClassName('seccion-pagina');
+            for (var i = 0; i < paginas.length; i++) {
+                paginas[i].style.display = 'none';
+            }
+            document.getElementById(id).style.display = 'block';
+            document.getElementById('menu-toggle').checked = false;
+            window.scrollTo(0, 0);
+        }
+
+        window.onload = function() {
+            document.getElementById('inicio').style.display = 'block';
+        }
+    </script>
+
+    <style>
+        :root {
+            --vino: #7a1e1e;
+            --vino-oscuro: #5a0f0f;
+            --crema: #fff5f5;
+            --rosa-suave: #fce8e8;
+            --acento: #c0392b;
+            --dorado: #d4af37;
+            --papel: #f5f1e8;
+            --negro: #000000;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.7;
+            background-color: var(--papel);
+            color: #1a1a1a;
+            background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+        }
+        header {
+            background: linear-gradient(135deg, var(--vino-oscuro) 0%, var(--vino) 100%);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            border-bottom: 3px solid var(--dorado);
+        }
+        nav {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+.logo {
+            color: #fff;
+            font-family: 'Special Elite', cursive;
+            font-size: 2rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-shadow: 2px 0px rgba(0,0,0,0.3);
+        }
+.logo span { color: var(--dorado); }
+
+.menu-toggle { display: none; }
+.menu-btn {
+            color: #fff;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--dorado);
+            border-radius: 5px;
+            transition: all 0.3s;
+            font-family: 'Special Elite', cursive;
+        }
+.menu-btn:hover {
+            background: var(--dorado);
+            color: var(--vino-oscuro);
+        }
+.triangulo {
+            font-size: 0.8rem;
+            transition: transform 0.3s;
+        }
+.menu-toggle:checked +.menu-btn.triangulo {
+            transform: rotate(180deg);
+        }
+.menu-lista {
+            list-style: none;
+            position: absolute;
+            top: 100%;
+            right: 2rem;
+            background: var(--vino-oscuro);
+            border: 2px solid var(--dorado);
+            border-radius: 8px;
+            padding: 1rem;
+            display: none;
+            flex-direction: column;
+            gap: 0.8rem;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+        }
+.menu-toggle:checked ~.menu-lista { display: flex; }
+.menu-lista li { cursor: pointer; }
+.menu-lista a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            padding: 0.5rem;
+            border-radius: 4px;
+            font-family: 'Special Elite', cursive;
+            display: block;
+        }
+.menu-lista a:hover {
+            color: var(--dorado);
+            background: rgba(255,255,0.1);
+        }
+
+.seccion-pagina {
+            display: none;
+            min-height: calc(100vh - 400px);
+       }
+
+.hero {
+            background: linear-gradient(rgba(90,15,0.85), rgba(90,15,15,0.85)), url('https://images.unsplash.com/photo-1596797427253-c5c7c4a5c6c1?w=1200') center/cover;
+            color: white;
+            text-align: center;
+            padding: 5rem 2rem;
+            border-bottom: 5px solid var(--dorado);
+        }
+.hero h1 {
+            font-family: 'Special Elite', cursive;
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 3px 0px rgba(0,0,0,0.5);
+            letter-spacing: 3px;
+        }
+.hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            font-weight: 500;
+        }
+
+.container { max-width: 1300px; margin: 0 auto; padding: 3rem 2rem; }
+
+.seccion {
+            background: #fff;
+            padding: 3rem;
+            margin: 2rem 0;
+            border-radius: 2px;
+            box-shadow: 8px 8px 0px rgba(122,30,0.2);
+            border: 3px solid var(--vino);
+            position: relative;
+        }
+.seccion::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: -10px;
+            bottom: -10px;
+            background: var(--rosa-suave);
+            z-index: -1;
+            border: 2px dashed var(--vino);
+        }
+
+        h2 {
+            font-family: 'Special Elite', cursive;
+            color: var(--vino-oscuro);
+            margin: 0 0 2rem 0;
+            font-size: 2.5rem;
+            text-align: center;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        h2::after {
+            content: '◆◆';
+            display: block;
+            font-size: 1rem;
+            color: var(--acento);
+            margin: 0.5rem auto 0;
+            letter-spacing: 10px;
+        }
+
+.grid-pasos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+.paso {
+            text-align: left;
+            background: var(--papel);
+            padding: 1.5rem;
+            border: 2px solid var(--vino);
+        }
+.placeholder-img {
+            width: 100%;
+            height: 220px;
+            background: var(--rosa-suave);
+            border: 3px dashed var(--vino);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--vino);
+            font-weight: 600;
+            text-align: center;
+            padding: 1rem;
+            font-family: 'Special Elite', cursive;
+        }
+.paso h3 {
+            color: var(--vino);
+            margin-bottom: 0.8rem;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            font-family: 'Special Elite', cursive;
+        }
+.paso-num {
+            background: var(--vino);
+            color: var(--dorado);
+            min-width: 40px;
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            font-weight: 700;
+            font-family: 'Special Elite', cursive;
+            border: 2px solid var(--dorado);
+        }
+
+.materiales,.glosario-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            justify-content: center;
+        }
+.material,.termino {
+            background: var(--rosa-suave);
+            padding: 1rem 1.5rem;
+            border: 2px solid var(--acento);
+            font-weight: 600;
+            font-family: 'Special Elite', cursive;
+            color: #1a1a1a;
+        }
+.termino { flex: 1 1 300px; }
+.termino strong {
+            color: var(--vino);
+            display: block;
+            margin-bottom: 0.3rem;
+            font-size: 1.1rem;
+        }
+
+.galeria {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+.galeria-item {
+            height: 250px;
+            border: 4px solid var(--vino);
+            box-shadow: 5px 5px 0px var(--dorado);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Special Elite', cursive;
+            font-size: 1.8rem;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+.galeria-item:nth-child(1) { background: #8B4513; }
+.galeria-item:nth-child(2) { background: #A0522D; }
+.galeria-item:nth-child(3) { background: #CD853F; }
+.galeria-item:nth-child(4) { background: #D2691E; }
+
+.btn-siguiente {
+            background: var(--vino);
+            color: white;
+            padding: 1rem 2.5rem;
+            border: 3px solid var(--dorado);
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Special Elite', cursive;
+            letter-spacing: 1px;
+            display: block;
+            margin: 3rem auto 0;
+            box-shadow: 4px 4px 0px var(--dorado);
+        }
+.btn-siguiente:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px var(--dorado);
+        }
+
+.barra-contactos {
+            background: var(--negro);
+            padding: 2.5rem 1rem;
+            text-align: center;
+            border-top: 3px solid var(--dorado);
+        }
+.links-contacto {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+.links-contacto a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+.links-contacto a:hover { color: var(--dorado); }
+
+.logo-enthavi {
+            font-family: 'Special Elite', cursive;
+            font-size: 2.2rem;
+            color: white;
+            letter-spacing: 4px;
+            margin: 2rem 0;
+     }
+
+.info-contacto-rapido {
+            color: #999;
+            font-size: 0.9rem;
+            margin: 1.5rem 0;
+            line-height: 1.8;
+     }
+.info-contacto-rapido strong {
+            color: var(--dorado);
+     }
+
+.redes-sociales {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+     }
+.redes-sociales a {
+            color: #ccc;
+            font-size: 1.8rem;
+            transition: all 0.3s;
+     }
+.redes-sociales a:hover {
+            color: var(--dorado);
+            transform: scale(1.2);
+     }
+
+        footer {
+            background-color: var(--vino-oscuro);
+            color: #fff;
+            padding: 1.5rem 2rem;
+            text-align: center;
+        }
+.footer-copy {
+            font-family: 'Special Elite', cursive;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+.hero h1 { font-size: 2.5rem; }
+.grid-pasos { grid-template-columns: 1fr; }
+.seccion { padding: 2rem 1.5rem; }
+           h2 { font-size: 2rem; }
+.links-contacto { flex-direction: column; gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Tejiendo <span>Mis Raíces</span></div>
+            <div class="menu-container">
+                <input type="checkbox" id="menu-toggle" class="menu-toggle">
+                <label for="menu-toggle" class="menu-btn">
+                    Menú <span class="triangulo">▼</span>
+                </label>
+                <ul class="menu-lista">
+                    <li><a onclick="cambiarPagina('inicio')">Inicio + Historia</a></li>
+                    <li><a onclick="cambiarPagina('materiales')">Materiales</a></li>
+                    <li><a onclick="cambiarPagina('pasos')">10 Pasos</a></li>
+                    <li><a onclick="cambiarPagina('glosario')">Glosario</a></li>
+                    <li><a onclick="cambiarPagina('galeria')">Galería</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- PÁGINA 1: INICIO + HISTORIA -->
+        <div id="inicio" class="seccion-pagina">
+            <section class="hero">
+                <h1>Telar de Cintura</h1>
+                <p>Una tradición textil de más de 2000 años que vive en las manos de las artesanas mexicanas. Aprende a montar tu propio telar desde cero, gracias a alumnos del módulo enthavi.</p>
+            </section>
+            <div class="container">
+                <section class="seccion">
+                    <h2>Cultura Otomí: Telar de Cintura</h2>
+                    <p>El telar de cintura o <em>telar de otate</em> es un instrumento prehispánico que data del 500 a.C. Fue esencial para la mujer mesoamericana. Con él se tejen huipiles, fajas, rebozos, morrales y lienzos ceremoniales. La tejedora es parte del telar: su cuerpo da la tensión con el mecapal amarrado a la cintura, mientras el otro extremo se fija a un poste o árbol.</p>
+                    <p><strong>Dato cultural:</strong> En comunidades otomíes del Estado de México, el telar se hereda de madres a hijas. Cada diseño geométrico cuenta una historia de la comunidad y representa elementos de la naturaleza como el sol, la milpa y el agua.</p>
+                    <button class="btn-siguiente" onclick="cambiarPagina('materiales')">Ver Materiales →</button>
+                </section>
+            </div>
+
+            <!-- BARRA NEGRA DE CONTACTOS -->
+            <div class="barra-contactos">
+                <div class="links-contacto">
+                    <a href="mailto:alfredrosas011@gmail.com">Correo: alfredrosas011@gmail.com</a>
+                    <a href="tel:5658980849">Tel: 56 5898 0849</a>
+                    <a href="#">Módulo EnTHAVI 2026</a>
+                </div>
+
+                <div class="logo-enthavi">ENTHAVI</div>
+
+                <div class="info-contacto-rapido">
+                    <strong>Enthavi Centro, Segunda Sección</strong><br>
+                    Temoaya, Estado de México | Ciclo Escolar 2026
+                </div>
+
+                <div class="redes-sociales">
+                    <a href="mailto:alfredrosas011@gmail.com" title="Correo"><i class="fas fa-envelope"></i></a>
+                    <a href="https://wa.me/525658980849" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+                <!-- PÁGINA 2: MATERIALES -->
+        <div id="materiales" class="seccion-pagina">
+            <div class="container">
+                <section class="seccion">
+                    <h2>¿Qué necesitas para empezar?</h2>
+                    <p>El telar lleva dos grupos de hilos: la <strong>urdimbre</strong> que son los hilos verticales que dan el largo, y la <strong>trama</strong> que se entrecruza horizontal y da el diseño.</p>
+                    <div class="materiales">
+                        <div class="material">3 m de hilo de algodón blanco para urdimbre</div>
+                        <div class="material">Hilo de lana de color para trama</div>
+                        <div class="material">2 maderas redondas de ½ pulgada x 1.5m</div>
+                        <div class="material">2 maderas circulares guía</div>
+                        <div class="material">Mecapal o faja para la cintura</div>
+                        <div class="material">Machete o tzotzopaztli para apretar</div>
+                    </div>
+                    <button class="btn-siguiente" onclick="cambiarPagina('pasos')">Ver los 10 Pasos →</button>
+                </section>
+            </div>
+        </div>
+
+        <!-- PÁGINA 3: PASOS -->
+        <div id="pasos" class="seccion-pagina">
+            <div class="container">
+                <section class="seccion">
+                    <h2>10 Pasos para armar tu telar de cintura</h2>
+                    <div class="grid-pasos">
+                        <div class="paso">
+                            <div class="placeholder-img">Foto del Paso 1<br>Coloca tus maderas</div>
+                            <h3><span class="paso-num">1</span>Preparar la base</h3>
+                            <p>Se colocan 2 maderas redondas de aprox. ½ pulgada de grosor, como una pata de escoba, separadas 1.5 m entre sí.</p>
+                        </div>
+                        <div class="paso">
+                            <div class="placeholder-img">Foto del Paso 2<br>Mide el hilo</div>
+                            <h3><span class="paso-num">2</span>Medir y colocar el hilo base</h3>
+                            <p>Se miden 3 m de hilo de algodón blanco. Se amarra en los extremos y se pasa por las 2 maderas redondas.</p>
+                        </div>
+                        <div class="paso">
+                            <div class="placeholder-img">Foto del Paso 3<br>Maderas guía</div>
+                            <h3><span class="paso-num">3</span>Colocar maderas guía</h3>
+                            <p>Se colocan dos maderas circulares aprox. a 40 cm o aprox. 2 cuartas de una de las maderas redondas que están como guía.</p>
+                        </div>
+                        <div class="paso">
+                            <div class="placeholder-img">Foto del Paso 4<br>Zigzag</div>
+                            <h3><span class="paso-num">4</span>Pasar el hilo en zigzag</h3>
+                            <p>El hilo se pasa entre estas dos últimas maderas en forma de zic zac. Una por enfrente de la madera y por atrás de la madera.</p>
+                        </div>
+                        <div class="paso">
+                            <div class="placeholder-img">Foto del Paso 5<br>Tendido</div>
+                            <h3><span class="paso-num">5</span>Hacer el tendido</h3>
+                            <p>Se hace un tendido de 5 pares con hilo blanco y 2 pares de hilo de color, lana. Para el diseño sencillo de rayas se hacen 5 tiradas con hilo blanco y 4 tiradas con hilo de lana de color.</p>
+                        </div>
+                        <div class="paso">
+                            <div class="placeholder-img">Foto del Paso 6<br>Amarre final</div>
+                            <h3><span class="paso-num">6</span>Separar y amarrar hilos</h3>
+                            <p>Cuando se termina el tendido de hilos se dejan aprox. 10 cm de ambos hilos, se amarran y cortan.</p>
+                        </div>
+                        <div class="paso">
+                            <div class="placeholder-img">Foto del Paso 7<br>Primer nudo</div>
+                            <h3><span class="paso-num">7</span>Primer amarre: Mitad de hilos</h3>
+                            <p>Se amarran ½ de hilos, posteriormente todos los hilos con un solo hilo. 2 amarres. Con los 10 cm se hace un primer amarre con la ½ de los hilos y se hace un 2º amarre a 10-5 cm del primero.</p>
+                        </div>
+                        <div class="paso">
+                            <div class="placeholder-img">Foto del Paso 8<br>Nudo cruz</div>
+                            <h3><span class="paso-num">8</span>Segundo amarre: Cruz o nudo</h3>
+                            <p>Cruz ó nudo. Se amarra la ½ de hilos. En la parte de abajo se hace el amarre o nudo.</p>
+                        </div>
+                        <div class="paso">
+                            <div class="placeholder-img">Foto del Paso 9<br>Holgura</div>
+                            <h3><span class="paso-num">9</span>Tercer amarre: Collar</h3>
+                            <p>Collar. Se amarra la ½ de todos los hilos dejando un aprox. de 10 cm de holgura, ó hilo flojo.</p>
+                        </div>
+                        <div class="paso">
+                            <div class="placeholder-img">Foto del Paso 10<br>Listo para tejer</div>
+                            <h3><span class="paso-num">10</span>Acomodo de maderas</h3>
+                            <p>Se amarra la ½ de hilos. Acomodo de las maderas en el tendido de hilos para empezar a tejer.</p>
+                        </div>
+                    </div>
+                    <button class="btn-siguiente" onclick="cambiarPagina('glosario')">Ver Glosario →</button>
+                </section>
+            </div>
+        </div>
+                <!-- PÁGINA 4: GLOSARIO -->
+        <div id="glosario" class="seccion-pagina">
+            <div class="container">
+                <section class="seccion">
+                    <h2>Glosario del Telar</h2>
+                    <div class="glosario-grid">
+                        <div class="termino"><strong>Urdimbre</strong>Conjunto de hilos verticales. Son la base y definen el largo del tejido.</div>
+                        <div class="termino"><strong>Trama</strong>Hilo que se pasa horizontalmente con la lanzadera. Da el diseño y color.</div>
+                        <div class="termino"><strong>Mecapal</strong>Faja ancha de cuero o tela que se amarra a la cintura para dar tensión.</div>
+                        <div class="termino"><strong>Enjulio</strong>Cada una de las dos varas principales donde se enrolla la urdimbre.</div>
+                        <div class="termino"><strong>Tzotzopaztli</strong>Machete de madera para apretar la trama. Significa "madera para apretar".</div>
+                        <div class="termino"><strong>Calada</strong>El espacio que se abre entre los hilos de urdimbre para pasar la trama.</div>
+                    </div>
+                    <button class="btn-siguiente" onclick="cambiarPagina('galeria')">Ver Galería →</button>
+                </section>
+            </div>
+        </div>
+
+        <!-- PÁGINA 5: GALERÍA -->
+        <div id="galeria" class="seccion-pagina">
+            <div class="container">
+                <section class="seccion">
+                    <h2>Galería</h2>
+                    <div class="galeria">
+                        <div class="galeria-item">Ejemplo 1</div>
+                        <div class="galeria-item">Ejemplo 2</div>
+                        <div class="galeria-item">Ejemplo 3</div>
+                        <div class="galeria-item">Ejemplo 4</div>
+                    </div>
+                    <button class="btn-siguiente" onclick="cambiarPagina('inicio')">Volver al Inicio</button>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-copy">
+            <p>Tejiendo Mis Raíces © 2026 | Módulo EnTHAVI | Página oficial del módulo EnTHAVI</p>
+        </div>
+    </footer>
+
+</body>
+</html>
